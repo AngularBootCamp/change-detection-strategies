@@ -15,7 +15,7 @@ export class ItemDetailComponent implements OnChanges, DoCheck {
   @Output() toggle = new EventEmitter<void>();
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('ItemDetail - ngOnChanges');
+    console.log('ItemDetail - ngOnChanges', changes);
   }
 
   ngDoCheck() {
