@@ -15,7 +15,7 @@ export class OnPushStrategyComponent implements OnChanges, DoCheck {
   @Output() toggleItem = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('OnPush Strategy - ngOnChanges');
+    console.log('OnPush Strategy - ngOnChanges', changes);
   }
 
   ngDoCheck() {

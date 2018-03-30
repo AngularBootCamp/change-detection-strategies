@@ -15,7 +15,7 @@ export class DefaultStrategyComponent implements OnChanges, DoCheck {
   @Output() toggleItem = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('Default Strategy - ngOnChanges');
+    console.log('Default Strategy - ngOnChanges', changes);
   }
 
   ngDoCheck() {
