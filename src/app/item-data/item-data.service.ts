@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { interval } from 'rxjs/observable/interval';
+import { Observable, BehaviorSubject, interval } from 'rxjs';
 import { delay, map, share, take } from 'rxjs/operators';
 
 import { Item } from './item-types';
