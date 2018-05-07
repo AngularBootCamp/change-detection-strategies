@@ -11,7 +11,9 @@ import { Item } from './item-types';
 // For any real code, please pick one approach - the code will be
 // shorter and better.
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ItemDataService {
   // Mutate State
   itemList1: Item[] = [];

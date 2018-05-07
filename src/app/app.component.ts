@@ -5,7 +5,6 @@ import { ItemDataService } from './item-data/item-data.service';
 
 @Component({
   selector: 'app-root',
-  providers: [ItemDataService],
   templateUrl: './app.component.html'
 })
 export class AppComponent {
