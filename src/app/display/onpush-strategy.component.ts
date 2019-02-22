@@ -11,7 +11,7 @@ import { Item } from '../item-data/item-types';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnPushStrategyComponent implements OnChanges, DoCheck {
-  @Input() items: Item[];
+  @Input() items: Item[] = [];
   @Output() toggleItem = new EventEmitter<number>();
 
   ngOnChanges(changes: SimpleChanges) {

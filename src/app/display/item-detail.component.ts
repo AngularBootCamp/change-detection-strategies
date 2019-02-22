@@ -11,7 +11,7 @@ import { Item } from '../item-data/item-types';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ItemDetailComponent implements OnChanges, DoCheck {
-  @Input() item: Item;
+  @Input() item: Item | undefined;
   @Output() toggle = new EventEmitter<void>();
 
   ngOnChanges(changes: SimpleChanges) {
