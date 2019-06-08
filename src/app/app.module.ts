@@ -17,5 +17,4 @@ import { OnPushStrategyComponent } from './display/onpush-strategy.component';
   imports: [BrowserModule, ReactiveFormsModule],
   bootstrap: [AppComponent]
 })
-
-export class AppModule { }
+export class AppModule {}

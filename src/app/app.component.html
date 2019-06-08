@@ -16,36 +16,71 @@
   </div>
   <div>
     <div>Control the data from outside</div>
-    <button class="btn" (click)="ids.addRandomItem()">Add Item</button>
-    <button class="btn" (click)="ids.toggleAllItems()">Toggle All</button>
+    <button class="btn" (click)="ids.addRandomItem()">
+      Add Item
+    </button>
+    <button class="btn" (click)="ids.toggleAllItems()">
+      Toggle All
+    </button>
   </div>
 </form>
 
 <div>
-  <p>Selected: {{configFormGroup.value.data + '-' + configFormGroup.value.strategy}}</p>
-  <div [ngSwitch]="configFormGroup.value.data + '-' + configFormGroup.value.strategy">
+  <p>
+    Selected:
+    {{
+      configFormGroup.value.data +
+        '-' +
+        configFormGroup.value.strategy
+    }}
+  </p>
+  <div
+    [ngSwitch]="
+      configFormGroup.value.data +
+      '-' +
+      configFormGroup.value.strategy
+    "
+  >
     <div *ngSwitchCase="'mutable-default'">
-      <default-strategy [items]="ids.itemList1" (toggleItem)="ids.toggleItem($event)"></default-strategy>
+      <default-strategy
+        [items]="ids.itemList1"
+        (toggleItem)="ids.toggleItem($event)"
+      ></default-strategy>
     </div>
 
     <div *ngSwitchCase="'immutable-default'">
-      <default-strategy [items]="ids.itemList2" (toggleItem)="ids.toggleItem($event)"></default-strategy>
+      <default-strategy
+        [items]="ids.itemList2"
+        (toggleItem)="ids.toggleItem($event)"
+      ></default-strategy>
     </div>
 
     <div *ngSwitchCase="'observable-default'">
-      <default-strategy [items]="ids.itemList3 | async" (toggleItem)="ids.toggleItem($event)"></default-strategy>
+      <default-strategy
+        [items]="ids.itemList3 | async"
+        (toggleItem)="ids.toggleItem($event)"
+      ></default-strategy>
     </div>
 
     <div *ngSwitchCase="'mutable-onpush'">
-      <onpush-strategy [items]="ids.itemList1" (toggleItem)="ids.toggleItem($event)"></onpush-strategy>
+      <onpush-strategy
+        [items]="ids.itemList1"
+        (toggleItem)="ids.toggleItem($event)"
+      ></onpush-strategy>
     </div>
 
     <div *ngSwitchCase="'immutable-onpush'">
-      <onpush-strategy [items]="ids.itemList2" (toggleItem)="ids.toggleItem($event)"></onpush-strategy>
+      <onpush-strategy
+        [items]="ids.itemList2"
+        (toggleItem)="ids.toggleItem($event)"
+      ></onpush-strategy>
     </div>
 
     <div *ngSwitchCase="'observable-onpush'">
-      <onpush-strategy [items]="ids.itemList3 | async" (toggleItem)="ids.toggleItem($event)"></onpush-strategy>
+      <onpush-strategy
+        [items]="ids.itemList3 | async"
+        (toggleItem)="ids.toggleItem($event)"
+      ></onpush-strategy>
     </div>
   </div>
 </div>

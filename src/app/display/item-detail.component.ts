@@ -1,6 +1,12 @@
 import {
-  ChangeDetectionStrategy, Component, DoCheck, EventEmitter,
-  Input, OnChanges, Output, SimpleChanges
+  ChangeDetectionStrategy,
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
 } from '@angular/core';
 
 import { Item } from '../item-data/item-types';
