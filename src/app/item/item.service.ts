@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, interval } from 'rxjs';
-import { delay, map, share, take } from 'rxjs/operators';
 
 import { Item } from './item-types';
 
 // This Data service is intentionally unrealistic; it exposes and
-// manipulates the same data in three different ways, so that we can
+// manipulates the same data in two different ways, so that we can
 // experiment with different change detection settings.
 
 // For any real code, please pick one approach - the code will be
@@ -14,22 +12,15 @@ import { Item } from './item-types';
 @Injectable({
   providedIn: 'root'
 })
-export class ItemDataService {
+export class ItemService {
   // Mutate State
   itemList1: Item[] = [];
 
   // Immutable State
   itemList2: Item[] = [];
 
-  // Observable State
-  private _itemlist3: BehaviorSubject<Item[]> = new BehaviorSubject(
-    this.itemList2
-  );
-  itemList3: Observable<Item[]> = this._itemlist3.pipe(share());
-
   constructor() {
     this.populate();
-    this.simulateIncomingDataFlow();
   }
 
   toggleItem(itemIndex: number) {
@@ -43,9 +34,6 @@ export class ItemDataService {
       ...this.itemList2[itemIndex],
       completed: !this.itemList2[itemIndex].completed
     };
-
-    // Observable State
-    this._itemlist3.next(this.itemList2);
   }
 
   toggleAllItems() {
@@ -59,9 +47,6 @@ export class ItemDataService {
       ...item,
       completed: !item.completed
     }));
-
-    // Observable State
-    this._itemlist3.next(this.itemList2);
   }
 
   addItem(newItem: Item) {
@@ -70,9 +55,6 @@ export class ItemDataService {
 
     // Immutable State
     this.itemList2 = [newItem, ...this.itemList2];
-
-    // Observable State
-    this._itemlist3.next(this.itemList2);
   }
 
   addRandomItem() {
@@ -84,16 +66,6 @@ export class ItemDataService {
     this.addItem(makeItem(1));
     this.addItem(makeItem(2));
     this.addItem(makeItem(3));
-  }
-
-  private simulateIncomingDataFlow() {
-    interval(2000)
-      .pipe(
-        delay(1000),
-        map(n => n + 10),
-        take(100)
-      )
-      .subscribe(n => this.addItem(makeItem(n)));
   }
 }
 

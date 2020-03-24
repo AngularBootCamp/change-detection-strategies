@@ -8,7 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 
-import { Item } from '../item-data/item-types';
+import { Item } from '../item/item-types';
 
 @Component({
   selector: 'default-strategy',

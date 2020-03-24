@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ItemDataService } from './item-data/item-data.service';
+import { ItemService } from './item/item.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,9 @@ import { ItemDataService } from './item-data/item-data.service';
 export class AppComponent {
   configFormGroup: FormGroup;
 
-  constructor(public ids: ItemDataService, fb: FormBuilder) {
+  constructor(public ids: ItemService, fb: FormBuilder) {
     this.configFormGroup = fb.group({
-      data: ['mutable'],
+      source: ['mutable'],
       strategy: ['default']
     });
   }

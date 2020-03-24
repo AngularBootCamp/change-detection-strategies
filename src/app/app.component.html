@@ -1,10 +1,9 @@
 <form [formGroup]="configFormGroup" class="three-across">
   <div>
     Data Source
-    <select formControlName="data">
+    <select formControlName="source">
       <option value="mutable">Mutated Array</option>
       <option value="immutable">Replaced Array</option>
-      <option value="observable">Observable | async</option>
     </select>
   </div>
   <div>
@@ -15,7 +14,7 @@
     </select>
   </div>
   <div>
-    <div>Control the data from outside</div>
+    <div>Control the data flow from outside</div>
     <button class="btn" (click)="ids.addRandomItem()">
       Add Item
     </button>
@@ -29,14 +28,14 @@
   <p>
     Selected:
     {{
-      configFormGroup.value.data +
+      configFormGroup.value.source +
         '-' +
         configFormGroup.value.strategy
     }}
   </p>
   <div
     [ngSwitch]="
-      configFormGroup.value.data +
+      configFormGroup.value.source +
       '-' +
       configFormGroup.value.strategy
     "
@@ -55,13 +54,6 @@
       ></default-strategy>
     </div>
 
-    <div *ngSwitchCase="'observable-default'">
-      <default-strategy
-        [items]="ids.itemList3 | async"
-        (toggleItem)="ids.toggleItem($event)"
-      ></default-strategy>
-    </div>
-
     <div *ngSwitchCase="'mutable-onpush'">
       <onpush-strategy
         [items]="ids.itemList1"
@@ -72,13 +64,6 @@
     <div *ngSwitchCase="'immutable-onpush'">
       <onpush-strategy
         [items]="ids.itemList2"
-        (toggleItem)="ids.toggleItem($event)"
-      ></onpush-strategy>
-    </div>
-
-    <div *ngSwitchCase="'observable-onpush'">
-      <onpush-strategy
-        [items]="ids.itemList3 | async"
         (toggleItem)="ids.toggleItem($event)"
       ></onpush-strategy>
     </div>
